@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-row {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+            display: block;
+        }
+
+        .field input[type="text"],
+        .field input[type="password"],
+        .field input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .field input[type="text"]:focus,
+        .field input[type="password"]:focus,
+        .field input[type="email"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .btn-box {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container div:last-child {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Let Register!</h1>
+    <form th:action="@{/register}" method="post" th:object="${newuser}">
+        <div class="form-row">
+            <div class="label">Username</div>
+            <div class="field">
+                <input type="text" th:field="*{username}" placeholder="Enter Username" required>
+            </div>
+            <div class="error" th:if="${error == 'username_is_in_used'}">* Username is already in use. Please choose another name.</div>
+        </div>
+        <div class="form-row">
+            <div class="label">Password</div>
+            <div class="field">
+                <input type="password" th:field="*{password}" placeholder="Enter your password" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="label">Confirm Password</div>
+            <div class="field">
+                <input type="password" th:field="*{confirmpassword}" placeholder="Confirm your password" required>
+            </div>
+            <div class="error" th:if="${error == 'confirm_password_not_matched'}">* Passwords do not match.</div>
+        </div>
+        <div class="form-row">
+            <div class="label">Full Name</div>
+            <div class="field">
+                <input type="text" th:field="*{fullname}" placeholder="Enter your full name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="label">Email</div>
+            <div class="field">
+                <input type="email" th:field="*{email}" placeholder="Enter your email">
+            </div>
+        </div>
+        <div class="form-row btn-box">
+            <button type="submit">Register</button>
+        </div>
+    </form>
+    <div>If you already have an account, click <a href="/login">here</a> to login.</div>
+    <div>Session: <span th:text="${msg}"></span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .header button:hover {
+            background-color: #218838;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #0056b3;
+            transition: background-color 0.3s ease;
+        }
+
+        .header a:hover {
+            background-color: #003f88;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+        }
+
+        .catalog {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 30px;
+            min-width: 200px;
+            height: fit-content;
+        }
+
+        .catalog h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .catalog ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .catalog ul li {
+            margin-bottom: 15px;
+        }
+
+        .catalog ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .catalog ul li a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .quantity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .quantity button {
+            background-color: #ddd;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .product button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .product button:hover {
+            background-color: #c82333;
+        }
+
+        .sign-out {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .sign-out button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .sign-out button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header">
+    <h1>Welcome to Spring Boot Security!</h1>
+    <input type="text" placeholder="Enter product name...">
+    <button>Search</button>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="catalog">
+        <h2>Selected Catalog (X items)</h2>
+        <ul>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Catalog 1</a></li>
+            <li><a href="#">Catalog 2</a></li>
+        </ul>
+    </div>
+
+    <div class="products">
+        <div class="product">
+            <div class="product-img"><img src="https://giayxshop.vn/wp-content/uploads/2022/12/z4775083268092_78c5bfdaa29be6bb9f40296ea0f2ed52-600x600.jpg" alt="Product 1"></div>
+            <div class="product-name">Giày Nike Dunk Disrupt 2 Trắng Xanh Lá</div>
+            <div class="product-price">5,000,000 VND</div>
+            <div class="quantity">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </div>
+            <button>Xóa</button>
+        </div>
+
+        <div class="product">
+            <div class="product-img"><img src="https://giayxshop.vn/wp-content/uploads/2021/12/24-8-300x300.jpg" alt="Product 2"></div>
+            <div class="product-name">Nike Air Force 1 Shadow Full Trắng REP</div>
+            <div class="product-price">15,000,000 VND</div>
+            <div class="quantity">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </div>
+            <button>Xóa</button>
+        </div>
+
+        <div class="product">
+            <div class="product-img"><img src="https://giayxshop.vn/wp-content/uploads/2023/08/z5452248093192_1d46bd482a682eca3e17d2bfac91b472-600x600.jpg" alt="Product 3"></div>
+            <div class="product-name">Nike Air Force 1 Shadow Xanh Xám REP</div>
+            <div class="product-price">200,000 VND</div>
+            <div class="quantity">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </div>
+            <button>Xóa</button>
+        </div>
+
+        <div class="product">
+            <div class="product-img"><img src="https://giayxshop.vn/wp-content/uploads/2024/05/1-1-300x300.jpg" alt="Product 4"></div>
+            <div class="product-name">Nike Air Force 1 Full Trắng REP 1:1</div>
+            <div class="product-price">300,000 VND</div>
+            <div class="quantity">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </div>
+            <button>Xóa</button>
+        </div>
+
+        <div class="product">
+            <div class="product-img"><img src="https://giayxshop.vn/wp-content/uploads/2020/12/z5485014596906_1b83c2fd7c991b88515bcd8aa1520276-300x300.jpg" alt="Product 5"></div>
+            <div class="product-name">Nike Jordan 1 High Đen Trắng REP 1:1</div>
+            <div class="product-price">2,500,000 VND</div>
+            <div class="quantity">
+                <button>-</button>
+                <input type="text" value="1">
+                <button>+</button>
+            </div>
+            <button>Xóa</button>
+        </div>
+    </div>
+
+    <div class="sign-out">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Sign out</button>
+        </form>
+    </div>
+
+</body>
+</html>
